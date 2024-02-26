@@ -18,7 +18,8 @@ On the recipe page there will be additional information regarding the nutrition 
 User Story
 As an avid home cook, I want to use the Recipe Finder website to discover new and exciting recipes, so that I can expand my culinary skills and create delicious meals for myself and my loved ones.
 
-Acceptance criteria
+##Acceptance criteria
+
 Given I am on the Recipe Finder homepage
 When I enter a keyword (e.g., "chicken") into the search bar and click "Search”.
 Then I should see a list of recipes containing the keyword in the title or description
