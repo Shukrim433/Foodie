@@ -1,3 +1,4 @@
+
 FOODIE 
 
 Authors
@@ -26,4 +27,5 @@ And each result should display a high-quality image, brief description, and nutr
 When I search for a dish and its information gets successfully displayed. 
 
 Then dish title/name is saved to local storage and displayed in the recipe search history area.
+
 Screenshots
