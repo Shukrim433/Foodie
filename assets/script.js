@@ -28,16 +28,24 @@ startBtnEl.addEventListener('click' , showRecipePage)
 let selectedMealType;
 mealTypeSelect.addEventListener('change' , function(){
   selectedMealType = mealTypeSelect.value 
+  console.log(selectedMealType)
 })
 //change event on dishType options
 let selectedDishType;
 dishTypeSelect.addEventListener('change' , function(){
   selectedDishType = dishTypeSelect.value
+  console.log(selectedDishType)
 })
 //change event on diet options
-let selectedDiets;
+let selectedDiets = [];
 dietTypeSelect.addEventListener('change' , function(){
-  selectedDiets = dietTypeSelect.value
+  var selectedOptions = Array.from(dietTypeSelect.selectedOptions)// '.selectedOptions' - a property of the `<select>` element that contains a list of all the selected `<option>` elements within that `<select>` element.
+  //Array.from() - a built in javascript method that takes takes the collection of selected options (dietTypeSelect.selectedOptions) and creates an array from it
+  console.log(selectedDiets)
+  selectedDiets = selectedOptions.map(function(element){
+    return element.value //return specifies that this should be included in the new selectedDiets array.
+  })
+  //.map() is a method that goes through each element in the selectedOptions array and applies the callback function on each element, then collects those transformed elements and puts them in a new array called selectedDiets. element parameter represents each option in the selectedOptions array
 })
 
 
