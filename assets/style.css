@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    font-weight: bold;
   }
   
 #logo {
@@ -49,8 +50,7 @@ aside {
 
 .options-div{
     display: flex;
- 
-    align-items: center;
+     align-items: center;
     justify-content: space-evenly;
     background-color: aquamarine;
 }
