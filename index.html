@@ -12,10 +12,9 @@
 
 
 <body>
-    <!--page header-->
+    <!--page header--> 
     <header>
-        <h1>FOODIE</h1>
-        <img src="./images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>
+          <img src="./images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>
     </header>
 
     <!--welcome page section-->
@@ -25,14 +24,15 @@
     </section>
 
     <!--recipe page (main) section-->
-    <main id="recipe-page" class="hidden">
+    <div id="menu">
+     <main id="recipe-page" class="hidden">
         <aside>
             <div id="search-history">
 
             </div>
         </aside>
         <div class="options-div">
-            <!--meal-type-->
+         <!--meal-type-->
          <label for="meal-type">Choose a meal type:</label>
          <select id="meal-type" name="meals">
              <option value="breakfast">breakfast</option>
@@ -104,7 +104,8 @@
                 nutritient information
             </div>
         </div>
-    </main>
+    </main
+    
 
 
     <!--error message modal widget-->
@@ -121,5 +122,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script src="./assets/script.js"></script>
+
 </body>
 </html>
