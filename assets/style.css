@@ -1,5 +1,76 @@
 /*made logo image smaller*/
+
+* {
+    box-sizing: border-box;
+    font-weight: bold;
+  }
+  
 #logo {
-    width: 150px;
+    width: 200px;
     height: auto;
+    margin-top: 54px;
+  }
+
+
+* body{
+    background-color: rgb(233, 192, 177);
+    font-family:'Times New Roman', Times, serif
+    line-height 5em;
 }
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(203, 235, 224);    
+}
+
+#welcome-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+
+
+p {
+    border: 3px solid rgb(77, 77, 77);
+   border-radius: 5px
+}
+   
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid rgb(77, 77, 77);
+    border-radius: 5px;  
+    float: left; 
+    width: 20%; 
+    background-color: rgb(220, 247, 147);
+}
+
+.options-div{
+    display: flex;
+     align-items: center;
+    justify-content: space-evenly;
+    background-color: aquamarine;
+}
+
+#recipe-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid rgb(77, 77, 77);
+    border-radius: 5px;  
+    float: right; 
+    width: 80%;    
+    background-color: rgb(169, 245, 162);
+}
+
+#recipe-nutrients{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid rgb(77, 77, 77);
+    border-radius: 5px;  
+}
+
