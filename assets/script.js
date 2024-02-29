@@ -9,9 +9,12 @@ var startBtnEl = document.getElementById('start-btn')
 var generateBtnEl = document.getElementById('generate-recipe-btn')
 var welcomePageEl = document.getElementById('welcome-page')
 var recipePageEl = document.getElementById('recipe-page')
+var imageEl = document.getElementById('image')
+var photoCreditEl = document.getElementById('photo-credit')
 var mealTypeSelect = document.getElementById('meal-type')
 var dishTypeSelect = document.getElementById('dish-type')
 var dietTypeSelect = document.getElementById('diet-type')
+
 
 //code to show welcome page and hide recipe page :
 welcomePageEl.style.display = 'block'
@@ -50,7 +53,26 @@ dietTypeSelect.addEventListener('change' , function(){
 
 
 function generateRecipe (){
-  var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&api_key=${PEXELS_API_KEY}`
+ var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}`
+
+ fetch(apiUrlPexels,{
+  headers: {
+    Authorization: PEXELS_API_KEY
+  }
+})
+   .then(resp => {
+     return resp.json()
+   })
+   .then(data => {
+     console.log(data)
+     var imgSrc = data.photos[0].src.medium
+     imageEl.setAttribute('src' , imgSrc)
+     var photographer = data.photos[0].photographer
+     photoCreditEl.textContent= `Photo by ${photographer}`
+   })
+
+
+
   
 
   var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&dishType=${selectedDishType}&health=${selectedDiets}&ingr=3-10&time=5-25&type=public&app_id=${EDAMAM_API_APP_ID}&app_key${EDAMAM_API_APP_KEY}`
@@ -75,4 +97,3 @@ generateBtnEl.addEventListener('click' , generateRecipe)
       }
     });
   } );*/
-
