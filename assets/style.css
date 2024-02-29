@@ -58,13 +58,12 @@
   }
   
   /*made logo image smaller*/
-  #logo {
+  .logo {
     width: 150px;
     height: auto;
   }
   
-  
-  .options-div{
+   .options-div{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
