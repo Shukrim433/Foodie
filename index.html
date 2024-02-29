@@ -8,32 +8,35 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!--our css stylesheet-->
     <link rel="stylesheet" href="./assets/style.css"></link>
+    <!--google fonts links:-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lilita+One&family=Madimi+One&display=swap" rel="stylesheet">
 </head>
 
 
 <body>
-    <!--page header--> 
+    <!--page header-->
     <header>
-
+        <h1>FOODIE</h1>
+        <!--<img src="./assets/images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>-->
     </header>
 
     <!--welcome page section-->
     <section id="welcome-page">
-		<p> Welcome to Foodie, the site where anyone can learn to cook simple dishes that use up to only 10 ingredients and take no more than 25 minutes to make.</p>
-            <button id="start-btn">Start Cooking!</button>
+        <div id="welcome-div">
+            <img src="./assets/images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>
+		    <p> Welcome to Foodie, the site where anyone can learn to cook simple dishes that use up to only 10 ingredients and take no more than 25 minutes to make.</p>
+            <button id="start-btn" class="btn">Start Cooking!</button>
+        </div>
     </section>
 
     <!--recipe page (main) section-->
-    <div id="menu">
-     <main id="recipe-page" class="hidden">
-        <aside>
-            <div id="search-history">
-            search history 
-            </div>
-        </aside>
+    <main id="recipe-page" class="hidden">
 
         <div class="options-div">
-         <!--meal-type-->
+            <!--meal-type-->
+            <div id="meal-div">
          <label for="meal-type">Choose a meal type:</label>
          <select id="meal-type" name="meals">
              <option value="breakfast">breakfast</option>
@@ -41,8 +44,10 @@
              <option value="lunch">lunch</option>
              <option value="snack">snack</option>
          </select>
+            </div>
           <!--dish-type-->
-          <label for="dish-type">Choose a dish type:</label>
+          <div id="dish-div">
+          <label for="dish-type">Choose dish types:</label>
           <select id="dish-type" name="dishes">
               <option value="buscuits and cookies">buscuits and cookies</option>
               <option value="desserts">desserts</option>
@@ -56,7 +61,9 @@
               <option value="sweets">sweets</option>
               <option value="side dish">side dish</option>
           </select>
+            </div>
           <!--diet-type-->
+          <div id="diet-div">
           <label for="diet-type">Choose a diet:</label>
           <select id="diet-type" name="diets" multiple>
               <option value="alcohol-free">alcohol-free</option>
@@ -94,24 +101,48 @@
               <option value="vegetarian">vegetarian</option>
               <option value="wheat-free">wheat-free</option>
           </select>
+        </div>
+          <button id="generate-recipe-btn" class="btn">Generate Recipe!</button>
+        </div> 
 
-          <button id="generate-recipe-btn">Generate Recipe!</button>
-        </div>  
-        <div id="recipe-info">
-            <h2 id="dish-name">Dish Name</h2>
-            <div id="img-container">
-                <div class="card">
-                    <img src="" alt="meal type image" id="image"></img>
-                    <p id="photo-credit"></p>
+        <div id="recipe-div">
+
+            <aside>
+                <div id="search-history">
+                    Search History
+                </div>
+            </aside>
+
+            <div id="recipe-info">
+
+                <div id="img-container">
+                    <div class="card">
+                        <h2 class="meal-type-name">e.g. Lunch Recipe Ideas</h2>
+                        <img src="" alt="meal type image" id="image"></img>
+                        <p id="photo-credit"></p>
+                    </div>
+                </div>
+
+                <div id="recipe-links">
+                    <div id="recipe-link-1"></div>
+                    <div id="recipe-link-2"></div>
+                    <div id="recipe-link-3"></div>
+                    <div id="recipe-link-4"></div>
+                    <div id="recipe-link-5"></div>
+                    <div id="recipe-link-6"></div>
+                    <div id="recipe-link-7"></div>
+                    <div id="recipe-link-8"></div>
+                    <div id="recipe-link-9"></div>
+                    <div id="recipe-link-10"></div>
+                </div>
+
+                <div id="recipe-nutrients">
+                    nutritient information
                 </div>
             </div>
-            <a href="" id="recipe-link">Recipe Link</a>
-            <div id="recipe-nutrients">
-                nutritient information
-            </div>
-        </div>
-    </main
-    
+         </div> 
+    </main>
+
 
 
     <!--error message modal widget-->
@@ -128,6 +159,5 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script src="./assets/script.js"></script>
-
 </body>
 </html>

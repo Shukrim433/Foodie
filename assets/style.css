@@ -1,76 +1,141 @@
-/*made logo image smaller*/
-
-* {
-    box-sizing: border-box;
-    font-weight: bold;
+:root{
+    --main-color: white   ;
+    --secondary-color: #062523;
+    --tertiary-color: #2b3b44 ;
+    --orange: #f5a41d;
+    --font: Arial, Helvetica, sans-serif;
+   /* --border-radius: 5px;*/
+    --border: 3px solid var(--secondary-color);
   }
   
-#logo {
-    width: 200px;
-    height: auto;
-    margin-top: 54px;
+  /** {
+    box-sizing: border-box;
+  }*/
+  
+  body{
+    font-family: var(--font);
+    background-color: var(--main-color);
   }
-
-
-* body{
-    background-color: rgb(233, 192, 177);
-    font-family:'Times New Roman', Times, serif
-    line-height 5em;
-}
-
-header {
+  
+  header{
+    font-size: 2rem;
+    margin: 0;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--secondary-color);
+    color: var(--orange);
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: rgb(203, 235, 224);    
-}
-
-#welcome-page {
-    display: flex;
     align-items: center;
-    justify-content: center;
-}   
-
-
-p {
-    border: 3px solid rgb(77, 77, 77);
-   border-radius: 5px
-}
-   
-aside {
+    padding: 1rem 0; /* this adds vertical padding */
+  }
+  
+  #welcome-page {
+    font-size: 1rem; /* Adjust size as needed */
+    background-color: white;
+    text-align: center;
+    padding: 2rem;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  
+  /* Button styles */
+  .btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: var(--orange);
+  }
+  
+  /*made logo image smaller*/
+  #logo {
+    width: 150px;
+    height: auto;
+  }
+  
+  
+  .options-div{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid rgb(77, 77, 77);
-    border-radius: 5px;  
-    float: left; 
-    width: 20%; 
-    background-color: rgb(220, 247, 147);
-}
-
-.options-div{
-    display: flex;
-     align-items: center;
     justify-content: space-evenly;
-    background-color: aquamarine;
-}
-
-#recipe-info{
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    border: 3px solid rgb(77, 77, 77);
-    border-radius: 5px;  
-    float: right; 
-    width: 80%;    
-    background-color: rgb(169, 245, 162);
-}
-
-#recipe-nutrients{
+    border: var(--border);
+    padding: 2%;
+    border-radius: 5px;
+    margin: 3%;
+  }
+  
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  label{
+    text-align: center;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #generate-recipe-btn {
+    border-radius: 5px;
+  }
+  
+  aside{
+    float: left;
+    width: 10%;
+    border: var(--border);
+    border-radius: 5px;
+  }
+  
+  #recipe-info{
+    padding: 1%;
+    float: right;
+    width: 85%;
+    border: var(--border);
+    border-radius: 5px;
+    margin: 2%;
+  }
+  
+  #recipe-div{
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    border: 3px solid rgb(77, 77, 77);
-    border-radius: 5px;  
-}
-
+  }
+  
+  
+  .card {
+    width: fit-content;
+    background-color: #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 20px;
+    margin: 1%;
+  }
+  
+  .card img {
+    width: 100%; /*makes the image take up the full available width of its parent container - card - but bcuz theres 20px padding it doesnt 'fill up' completely*/
+    height: auto;/*makes sure the photo maintains it's aspect ratio*/
+    margin-bottom: 10px;
+  }
+  
+  #photo-credit {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
