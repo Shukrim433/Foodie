@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!--our css stylesheet-->
     <link rel="stylesheet" href="./assets/style.css"></link>
+    <!--google fonts links:-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lilita+One&family=Madimi+One&display=swap" rel="stylesheet">
 </head>
 
 
@@ -15,13 +19,16 @@
     <!--page header-->
     <header>
         <h1>FOODIE</h1>
-        <img src="./assets/images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>
+        <!--<img src="./assets/images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>-->
     </header>
 
     <!--welcome page section-->
     <section id="welcome-page">
-		<p> Welcome to Foodie, the site where anyone can learn to cook simple dishes that use up to only 10 ingredients and take no more than 25 minutes to make.</p>
+        <div id="welcome-div">
+            <img src="./assets/images/Foodie logo 2.webp" alt="foodie logo" id="logo"></img>
+		    <p> Welcome to Foodie, the site where anyone can learn to cook simple dishes that use up to only 10 ingredients and take no more than 25 minutes to make.</p>
             <button id="start-btn">Start Cooking!</button>
+        </div>
     </section>
 
     <!--recipe page (main) section-->
@@ -31,6 +38,7 @@
 
             </div>
         </aside>
+
         <div class="options-div">
             <!--meal-type-->
          <label for="meal-type">Choose a meal type:</label>
@@ -98,7 +106,12 @@
         </div>  
         <div id="recipe-info">
             <h2 id="dish-name">Dish Name</h2>
-            <img src="" alt="meal type image"></img>
+            <div id="img-container">
+                <div class="card">
+                    <img src="" alt="meal type image" id="image"></img>
+                    <p id="photo-credit"></p>
+                </div>
+            </div>
             <a href="" id="recipe-link">Recipe Link</a>
             <div id="recipe-nutrients">
                 nutritient information

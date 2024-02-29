@@ -1,3 +1,59 @@
+:root{
+    --main-color: white   ;
+    --secondary-color: #062523;
+    --tertiary-color: #2b3b44 ;
+    --orange: #f5a41d;
+    --font: Arial, Helvetica, sans-serif;
+   /* --border-radius: 5px;*/
+    --border: 3px solid var(--secondary-color);
+}
+
+body{
+    font-family: var(--font);
+    background-color: var(--main-color);
+}
+
+header{
+    font-size: 2rem;
+    margin: 0;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0; /* this adds vertical padding */
+}
+
+#welcome-page {
+    font-size: 1rem; /* Adjust size as needed */
+    background-color: white;
+    text-align: center;
+    padding: 2rem;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+
+
+/* Button styles */
+#start-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-btn:hover {
+    background-color: var(--orange);
+}
+
 /*made logo image smaller*/
 #logo {
     width: 150px;
