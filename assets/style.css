@@ -1,144 +1,179 @@
 :root{
-    --main-color: white   ;
-    --secondary-color: #062523;
-    --tertiary-color: #2b3b44 ;
-    --orange: #f5a41d;
-    --font: Arial, Helvetica, sans-serif;
-   /* --border-radius: 5px;*/
-    --border: 3px solid var(--secondary-color);
-  }
-  
-  /** {
-    box-sizing: border-box;
-  }*/
-  
-  body{
-    font-family: var(--font);
-    background-color: var(--main-color);
-  }
-  
-  header{
-    font-size: 2rem;
-    margin: 0;
-    font-family: "Lilita One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: var(--secondary-color);
-    color: var(--orange);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0; /* this adds vertical padding */
-  }
-  
-  #welcome-page {
-    font-size: 1rem; /* Adjust size as needed */
-    background-color: white;
-    text-align: center;
-    padding: 2rem;
-    width: 80%;
-    max-width: 600px;
-    margin: auto;
-  }
-  
-  
-  /* Button styles */
-  .btn {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: var(--orange);
-  }
-  
-  /*made logo image smaller*/
-  .logo {
-    width: 150px;
-    height: auto;
-  }
-  
-   .options-div{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border: var(--border);
-    padding: 2%;
-    border-radius: 5px;
-    margin: 3%;
-  }
-  
-  
-  select {
-    width: 100%;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-  
-  label{
-    text-align: center;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  #generate-recipe-btn {
-    border-radius: 5px;
-  }
-  
-  aside{
-    float: left;
-    width: 10%;
-    border: var(--border);
-    border-radius: 5px;
-  }
-  
-  #recipe-info{
-    padding: 1%;
-    float: right;
-    width: 85%;
-    border: var(--border);
-    border-radius: 5px;
-    margin: 2%;
-  }
-  
-  #recipe-div{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  
-  
-  .card {
-    width: fit-content;
-    background-color: #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    padding: 20px;
-    margin: 1%;
-  }
-  
-  .card img {
-    width: 100%; /*makes the image take up the full available width of its parent container - card - but bcuz theres 20px padding it doesnt 'fill up' completely*/
-    height: auto;/*makes sure the photo maintains it's aspect ratio*/
-    margin-bottom: 10px;
-  }
-  
-  #photo-credit {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
+  --main-color: white   ;
+  --secondary-color: #062523;
+  --tertiary-color: #2b3b44 ;
+  --orange: #f5a41d;
+  --font: Arial, Helvetica, sans-serif;
+ /* --border-radius: 5px;*/
+  --border: 3px solid var(--secondary-color);
+}
+
+
+
+
+
+/** {
+  box-sizing: border-box;
+}*/
+
+body{
+  font-family: var(--font);
+  background-color: var(--main-color);
+  margin: 0;
+}
+
+header{
+  font-size: 2rem;
+  margin: 0;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--secondary-color);
+  color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid orange;
+  padding: 1rem 0; /* this adds vertical padding */
+}
+
+#welcome-page {
+  font-size: 1rem; /* Adjust size as needed */
+  background-color: white;
+  text-align: center;
+  padding: 2rem;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+}
+
+
+/* Button styles */
+.btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: var(--orange);
+}
+
+/*made logo image smaller*/
+#logo {
+  width: 150px;
+  height: auto;
+}
+
+
+#logo2 {
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+
+ .options-div{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: var(--border);
+  padding: 2%;
+  border-radius: 5px;
+  margin: 3%;
+  height: 120px;
+}
+
+
+#search-history
+{
+font-size: 20px;
+text-align: center;
+}
+
+
+#recipe-nutrients
+{
+  font-size: 15px;
+  margin-left: 90px;
   }
 
-  @media only screen and (min-width: 600px) {
-    }
-    /*for responsive adding media query
- 
+
+
+select {
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+label{
+  text-align: center;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#generate-recipe-btn {
+  border-radius: 5px;
+}
+
+aside{
+  float: left;
+  width: 15%;
+  height: 230px; 
+  border: var(--border);
+  border-radius: 5px;
+margin-left: 40px;
+
+}
+
+#recipe-info{
+  padding: 1%;
+  float: right;
+  width: 74%;
+  border: var(--border);
+  border-radius: 5px;
+  margin: 2%;
+}
+
+#recipe-div{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.card {
+  width: fit-content;
+  background-color: #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 20px;
+  margin: 1%;
+}
+
+.card img {
+  width: 100%; /*makes the image take up the full available width of its parent container - card - but bcuz theres 20px padding it doesnt 'fill up' completely*/
+  height: auto;/*makes sure the photo maintains it's aspect ratio*/
+  margin-bottom: 10px;
+}
+
+#photo-credit {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+@media only screen and (min-width: 600px) {
+  }
+  /*for responsive adding media query
+
