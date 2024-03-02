@@ -13,6 +13,7 @@ var mealTypeSelect = document.getElementById('meal-type')
 var dishTypeSelect = document.getElementById('dish-type')
 var dietTypeSelect = document.getElementById('diet-type')
 
+
 //code to show welcome page and hide recipe page :
 welcomePageEl.style.display = 'block'
 recipePageEl.style.display = 'none'
@@ -36,6 +37,7 @@ dishTypeSelect.addEventListener('change' , function(){
   selectedDishType = dishTypeSelect.value
   console.log(selectedDishType)
 })
+
 //change event on diet options
 let selectedDiets = [];
 dietTypeSelect.addEventListener('change' , function(){
@@ -67,10 +69,7 @@ function generateRecipe (){
       var photographer = data.photos[0].photographer
       photoCreditEl.textContent= `Photo by ${photographer}`
     })
- 
- 
- 
-   
+
  
    var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&dishType=${selectedDishType}&health=${selectedDiets}&ingr=3-10&time=5-25&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
  }
