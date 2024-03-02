@@ -1,7 +1,7 @@
 :root{
   --main-color: white   ;
   --secondary-color: #062523;
-  --tertiary-color: #2b3b44 ;
+  --tertiary-color: #57aba6 ;
   --orange: #f5a41d;
   --font: Arial, Helvetica, sans-serif;
  /* --border-radius: 5px;*/
@@ -33,7 +33,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid orange;
+  border-bottom: 5px solid var(--orange);
   padding: 1rem 0; /* this adds vertical padding */
 }
 
@@ -88,6 +88,7 @@ header{
   border-radius: 5px;
   margin: 3%;
   height: 120px;
+  background-color: var(--main-color);
 }
 
 
@@ -131,7 +132,7 @@ aside{
   height: 230px; 
   border: var(--border);
   border-radius: 5px;
-margin-left: 40px;
+  margin-left: 40px;
 
 }
 
@@ -173,7 +174,38 @@ margin-left: 40px;
   color: #666;
 }
 
+.recipe-card .recipe-image{
+    width: 25%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.recipe-info{
+    float: right;
+    width: 70%;
+    margin-top: 6.25%;
+}
+
+.recipe-container{
+    margin: 20px;
+    margin-top: 30px;
+    background-color: #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: var(--main-color);
+}
+
+.recipe-url{
+    color: #f5a41d;
+}
+.recipe-name{
+    color: #062523;
+}
+
 @media only screen and (min-width: 600px) {
   }
   /*for responsive adding media query
+
+
 
