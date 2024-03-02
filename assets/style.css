@@ -75,7 +75,7 @@ header{
   width: 100px;
   height: auto;
   margin-left: 20px;
-  margin-top: -10px;
+
 }
 
 
@@ -126,23 +126,112 @@ label{
   border-radius: 5px;
 }
 
-aside{
-  float: left;
-  width: 15%;
-  height: 230px; 
+aside {
+  width: 10%; /* Take full width to ensure it doesn't float next to anything */
   border: var(--border);
   border-radius: 5px;
-  margin-left: 40px;
+  margin-left: 30px;
+  padding: 7%;
+  /* Removed float: left; to ensure it stacks under #recipe-info */
+}
+
+#recipe-info{
+  padding: 7%;
+  width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
+  border: var(--border);
+  border-radius: 5px;
+
+  margin: 2%;
+  margin-left: 55px;
+  /* Removed float: right; to ensure it doesn't force the aside to float next to it */
+}
+
+
+
+/* Add media query for mobile devices */
+@media only screen and (max-width: 400px) {
+  .options-div {
+    flex-direction: column; /* Stack divs vertically */
+    height: auto; /* Reset height */
+    padding: 5%; /* Adjust padding */
+    margin: 3% auto; /* Center divs on the page */
+    width: 90%; /* Set width to take up most of the screen */
+  }
+
+  aside {
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page and add some space above */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+
+  #recipe-info {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: relative; /* Reset position to default */
+    top: auto; /* Reset top position */
+    left: auto; /* Reset left position */
+  }
+}
+
+
+
+
+
+
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 400px) {
+  /* Style for #recipe-info on mobile */
+  #recipe-info {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: absolute; /* Position the div absolutely */
+    top: 50px; /* Initial top position */
+    left: 50px;
+  
+  }
+}
+
+
+  @media only screen and (max-width: 400px) {
+  /* Style for aside (Search History) on mobile */
+  aside {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page and add some space above */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+   
+ 
+
+  }
+}
+
+
+
+h2
+{
+opacity: 20%;
+ font-weight: lighter;
 
 }
+
 
 #recipe-info{
   padding: 1%;
   float: right;
-  width: 74%;
+  width: 62%;
   border: var(--border);
   border-radius: 5px;
   margin: 2%;
+  margin-left: 55px;
 }
 
 #recipe-div{
@@ -156,7 +245,7 @@ aside{
   width: fit-content;
   background-color: #ccc;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   text-align: center;
   padding: 20px;
   margin: 1%;
@@ -174,6 +263,15 @@ aside{
   color: #666;
 }
 
+
+
+/* Add media query for iPad and larger screens */
+@media only screen and (min-width: 400px) {
+  .options-div {
+    flex-direction: column;
+    height: auto;
+    padding: 5%;
+=======
 .recipe-card .recipe-image{
     width: 25%;
     height: auto;
@@ -204,9 +302,27 @@ aside{
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
+
+
+
+
+@media only screen and (min-width: 768px) {
+  .options-div {
+    flex-direction: row; /* Adjust for larger screens */
   }
-  /*for responsive adding media query
+}
 
+/* Add media query for tablets and larger screens */
+@media only screen and (min-width: 1024px) {
+  .options-div {
+    flex-direction: row; /* Adjust for larger screens */
+  }
+}
 
+/* Add media query for desktop screens */
+@media only screen and (min-width: 1200px) {
+  .options-div {
+    flex-direction: row; /* Adjust for larger screens */
+  }
+}
 
