@@ -1,328 +1,329 @@
 :root{
-  --main-color: white   ;
-  --secondary-color: #062523;
-  --tertiary-color: #57aba6 ;
-  --orange: #f5a41d;
-  --font: Arial, Helvetica, sans-serif;
- /* --border-radius: 5px;*/
-  --border: 3px solid var(--secondary-color);
-}
-
-
-
-
-
-/** {
-  box-sizing: border-box;
-}*/
-
-body{
-  font-family: var(--font);
-  background-color: var(--main-color);
-  margin: 0;
-}
-
-header{
-  font-size: 2rem;
-  margin: 0;
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  background-color: var(--secondary-color);
-  color: var(--orange);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 5px solid var(--orange);
-  padding: 1rem 0; /* this adds vertical padding */
-}
-
-#welcome-page {
-  font-size: 1rem; /* Adjust size as needed */
-  background-color: white;
-  text-align: center;
-  padding: 2rem;
-  width: 80%;
-  max-width: 600px;
-  margin: auto;
-}
-
-
-/* Button styles */
-.btn {
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  background-color: var(--orange);
-}
-
-/*made logo image smaller*/
-#logo {
-  width: 150px;
-  height: auto;
-}
-
-
-#logo2 {
-  width: 100px;
-  height: auto;
-  margin-left: 20px;
-
-}
-
-
- .options-div{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border: var(--border);
-  padding: 2%;
-  border-radius: 5px;
-  margin: 3%;
-  height: 120px;
-  background-color: var(--main-color);
-}
-
-
-#search-history
-{
-font-size: 20px;
-text-align: center;
-}
-
-
-#recipe-nutrients
-{
-  font-size: 15px;
-  margin-left: 90px;
+    --main-color: white   ;
+    --secondary-color: #062523;
+    --tertiary-color: #57aba6 ;
+    --orange: #f5a41d;
+    --font: Arial, Helvetica, sans-serif;
+   /* --border-radius: 5px;*/
+    --border: 3px solid var(--secondary-color);
   }
-
-
-
-select {
-  width: 100%;
-  padding: 8px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-label{
-  text-align: center;
-  display: block;
-  margin-bottom: 5px;
-}
-
-#generate-recipe-btn {
-  border-radius: 5px;
-}
-
-aside {
-  width: 10%; /* Take full width to ensure it doesn't float next to anything */
-  border: var(--border);
-  border-radius: 5px;
-  margin-left: 30px;
-  padding: 7%;
-  /* Removed float: left; to ensure it stacks under #recipe-info */
-}
-
-#recipe-info{
-  padding: 7%;
-  width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
-  border: var(--border);
-  border-radius: 5px;
-
-  margin: 2%;
-  margin-left: 55px;
-  /* Removed float: right; to ensure it doesn't force the aside to float next to it */
-}
-
-
-
-/* Add media query for mobile devices */
-@media only screen and (max-width: 400px) {
-  .options-div {
-    flex-direction: column; /* Stack divs vertically */
-    height: auto; /* Reset height */
-    padding: 5%; /* Adjust padding */
-    margin: 3% auto; /* Center divs on the page */
-    width: 90%; /* Set width to take up most of the screen */
+  
+  
+  
+  
+  
+  /** {
+    box-sizing: border-box;
+  }*/
+  
+  body{
+    font-family: var(--font);
+    background-color: var(--main-color);
+    margin: 0;
   }
-
-  aside {
-    width: 90%; /* Full width for mobile */
-    margin: 10px auto; /* Center the block on the page and add some space above */
-    padding: 10px; /* Adjust padding as necessary */
-    box-sizing: border-box; /* Include padding and border in the width */
+  
+  header{
+    font-size: 2rem;
+    margin: 0;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--secondary-color);
+    color: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid var(--orange);
+    padding: 1rem 0; /* this adds vertical padding */
   }
-
-  #recipe-info {
-    float: none; /* Clear floats */
-    width: 90%; /* Full width for mobile */
-    margin: 10px auto; /* Center the block on the page */
-    padding: 10px; /* Adjust padding as necessary */
-    box-sizing: border-box; /* Include padding and border in the width */
-    position: relative; /* Reset position to default */
-    top: auto; /* Reset top position */
-    left: auto; /* Reset left position */
+  
+  #welcome-page {
+    font-size: 1rem; /* Adjust size as needed */
+    background-color: white;
+    text-align: center;
+    padding: 2rem;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
   }
-}
-
-
-
-
-
-
-
-/* Media Query for Mobile Devices */
-@media only screen and (max-width: 400px) {
-  /* Style for #recipe-info on mobile */
-  #recipe-info {
-    float: none; /* Clear floats */
-    width: 90%; /* Full width for mobile */
-    margin: 10px auto; /* Center the block on the page */
-    padding: 10px; /* Adjust padding as necessary */
-    box-sizing: border-box; /* Include padding and border in the width */
-    position: absolute; /* Position the div absolutely */
-    top: 50px; /* Initial top position */
-    left: 50px;
+  
+  
+  /* Button styles */
+  .btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: var(--orange);
+  }
+  
+  /*made logo image smaller*/
+  #logo {
+    width: 150px;
+    height: auto;
+  }
+  
+  
+  #logo2 {
+    width: 100px;
+    height: auto;
+    margin-left: 20px;
   
   }
-}
-
-
-  @media only screen and (max-width: 400px) {
-  /* Style for aside (Search History) on mobile */
-  aside {
-    float: none; /* Clear floats */
-    width: 90%; /* Full width for mobile */
-    margin: 10px auto; /* Center the block on the page and add some space above */
-    padding: 10px; /* Adjust padding as necessary */
-    box-sizing: border-box; /* Include padding and border in the width */
-   
- 
-
-  }
-}
-
-
-
-h2
-{
-opacity: 20%;
- font-weight: lighter;
-
-}
-
-
-#recipe-info{
-  padding: 1%;
-  float: right;
-  width: 62%;
-  border: var(--border);
-  border-radius: 5px;
-  margin: 2%;
-  margin-left: 55px;
-}
-
-#recipe-div{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-
-.card {
-  width: fit-content;
-  background-color: #ccc;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-  text-align: center;
-  padding: 20px;
-  margin: 1%;
-}
-
-.card img {
-  width: 100%; /*makes the image take up the full available width of its parent container - card - but bcuz theres 20px padding it doesnt 'fill up' completely*/
-  height: auto;/*makes sure the photo maintains it's aspect ratio*/
-  margin-bottom: 10px;
-}
-
-#photo-credit {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #666;
-}
-
-
-
-/* Add media query for iPad and larger screens */
-@media only screen and (min-width: 400px) {
-  .options-div {
-    flex-direction: column;
-    height: auto;
-    padding: 5%;
-=======
-.recipe-card .recipe-image{
-    width: 25%;
-    height: auto;
+  
+  
+   .options-div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: var(--border);
+    padding: 2%;
     border-radius: 5px;
-}
-
-.recipe-info{
+    margin: 3%;
+    height: 120px;
+    background-color: var(--main-color);
+  }
+  
+  
+  #search-history
+  {
+  font-size: 20px;
+  text-align: center;
+  }
+  
+  
+  #recipe-nutrients
+  {
+    font-size: 15px;
+    margin-left: 90px;
+    }
+  
+  
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  label{
+    text-align: center;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #generate-recipe-btn {
+    border-radius: 5px;
+  }
+  
+  aside {
+    width: 10%; /* Take full width to ensure it doesn't float next to anything */
+    border: var(--border);
+    border-radius: 5px;
+    margin-left: 30px;
+    padding: 7%;
+    /* Removed float: left; to ensure it stacks under #recipe-info */
+  }
+  
+  #recipe-info{
+    padding: 7%;
+    width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
+    border: var(--border);
+    border-radius: 5px;
+  
+    margin: 2%;
+    margin-left: 55px;
+    /* Removed float: right; to ensure it doesn't force the aside to float next to it */
+  }
+  
+  
+  
+  /* Add media query for mobile devices */
+  @media only screen and (max-width: 400px) {
+    .options-div {
+      flex-direction: column; /* Stack divs vertically */
+      height: auto; /* Reset height */
+      padding: 5%; /* Adjust padding */
+      margin: 3% auto; /* Center divs on the page */
+      width: 90%; /* Set width to take up most of the screen */
+    }
+  
+    aside {
+      width: 90%; /* Full width for mobile */
+      margin: 10px auto; /* Center the block on the page and add some space above */
+      padding: 10px; /* Adjust padding as necessary */
+      box-sizing: border-box; /* Include padding and border in the width */
+    }
+  
+    #recipe-info {
+      float: none; /* Clear floats */
+      width: 90%; /* Full width for mobile */
+      margin: 10px auto; /* Center the block on the page */
+      padding: 10px; /* Adjust padding as necessary */
+      box-sizing: border-box; /* Include padding and border in the width */
+      position: relative; /* Reset position to default */
+      top: auto; /* Reset top position */
+      left: auto; /* Reset left position */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  /* Media Query for Mobile Devices */
+  @media only screen and (max-width: 400px) {
+    /* Style for #recipe-info on mobile */
+    #recipe-info {
+      float: none; /* Clear floats */
+      width: 90%; /* Full width for mobile */
+      margin: 10px auto; /* Center the block on the page */
+      padding: 10px; /* Adjust padding as necessary */
+      box-sizing: border-box; /* Include padding and border in the width */
+      position: absolute; /* Position the div absolutely */
+      top: 50px; /* Initial top position */
+      left: 50px;
+    
+    }
+  }
+  
+  
+    @media only screen and (max-width: 400px) {
+    /* Style for aside (Search History) on mobile */
+    aside {
+      float: none; /* Clear floats */
+      width: 90%; /* Full width for mobile */
+      margin: 10px auto; /* Center the block on the page and add some space above */
+      padding: 10px; /* Adjust padding as necessary */
+      box-sizing: border-box; /* Include padding and border in the width */
+     
+   
+  
+    }
+  }
+  
+  
+  
+  h2
+  {
+  opacity: 20%;
+   font-weight: lighter;
+  
+  }
+  
+  
+  #recipe-info{
+    padding: 1%;
     float: right;
-    width: 70%;
-    margin-top: 6.25%;
-}
-
-.recipe-container{
-    margin: 20px;
-    margin-top: 30px;
+    width: 62%;
+    border: var(--border);
+    border-radius: 5px;
+    margin: 2%;
+    margin-left: 55px;
+  }
+  
+  #recipe-div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  
+  .card {
+    width: fit-content;
     background-color: #ccc;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    text-align: center;
     padding: 20px;
-    background-color: var(--main-color);
-}
-
-.recipe-url{
-    color: #f5a41d;
-}
-.recipe-name:hover{
-    color: #062523;
-    cursor: pointer;
-}
-
-
-
-
-
-@media only screen and (min-width: 768px) {
-  .options-div {
-    flex-direction: row; /* Adjust for larger screens */
+    margin: 1%;
   }
-}
-
-/* Add media query for tablets and larger screens */
-@media only screen and (min-width: 1024px) {
-  .options-div {
-    flex-direction: row; /* Adjust for larger screens */
+  
+  .card img {
+    width: 100%; /*makes the image take up the full available width of its parent container - card - but bcuz theres 20px padding it doesnt 'fill up' completely*/
+    height: auto;/*makes sure the photo maintains it's aspect ratio*/
+    margin-bottom: 10px;
   }
-}
-
-/* Add media query for desktop screens */
-@media only screen and (min-width: 1200px) {
-  .options-div {
-    flex-direction: row; /* Adjust for larger screens */
+  
+  #photo-credit {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
   }
-}
-
+  
+  
+  
+  /* Add media query for iPad and larger screens */
+  @media only screen and (min-width: 400px) {
+    .options-div {
+      flex-direction: column;
+      height: auto;
+      padding: 5%;}
+ 
+  .recipe-card .recipe-image{
+      width: 25%;
+      height: auto;
+      border-radius: 5px;
+  }
+  
+  .recipe-info{
+      float: right;
+      width: 70%;
+      margin-top: 6.25%;
+  }
+  
+  .recipe-container{
+      margin: 20px;
+      margin-top: 30px;
+      background-color: #ccc;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      background-color: var(--main-color);
+  }
+  
+  .recipe-url{
+      color: #f5a41d;
+  }
+  .recipe-name:hover{
+      color: #062523;
+      cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  @media only screen and (min-width: 768px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Add media query for tablets and larger screens */
+  @media only screen and (min-width: 1024px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Add media query for desktop screens */
+  @media only screen and (min-width: 1200px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  }
