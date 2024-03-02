@@ -243,12 +243,13 @@
   
   .card {
     width: fit-content;
-    background-color: #ccc;
+    background-color: #ededed;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
     padding: 20px;
     margin: 1%;
+    margin-bottom: 40px;
   }
   
   .card img {
@@ -277,31 +278,63 @@
       height: auto;
       border-radius: 5px;
   }
-  
+
   .recipe-info{
-      float: right;
-      width: 70%;
-      margin-top: 6.25%;
-  }
+    float: right;
+    width: 70%;
+    margin-top: 6.25%;
+}
   
   .recipe-container{
-      margin: 20px;
-      margin-top: 30px;
-      background-color: #ccc;
-      border-radius: 5px;
+      margin-left: 20px;
+      margin-right: 20px;
+      background-color: #ffffff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       padding: 20px;
-      background-color: var(--main-color);
-  }
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+}
   
-  .recipe-url{
-      color: #f5a41d;
-  }
-  .recipe-name:hover{
-      color: #062523;
+  .recipe-url:hover{
       cursor: pointer;
   }
+  .recipe-name:hover{
+      cursor: pointer;
+  }
+  .recipe-name{
+    color: #062523;
+    text-align: center;
+}
+
+  .nutrients-container{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #ededed;
+    padding: 30px;
+    height: fit-content;
+  }
+
+  .kcal-servings-time-div{
+    float: left;
+    width: 40%;
+    text-align: center;
+    height: 100%;
+    color: var(--orange);
+  }
+
+  .grams-div{
+    float: right;
+    width: 30%;
+    color: var(--orange);
+  }
   
+  .mg-div{
+    color: var(--orange);
+  }
   
   
   
