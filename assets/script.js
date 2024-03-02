@@ -69,10 +69,10 @@ function generateRecipe (){
    headers: {
      Authorization: PEXELS_API_KEY
    } /*added api key in the 'header' because thats how the pexels api is authosied, not in the query string parameter.*/})
-    .then(resp => {
-      return resp.json()
-    })
-    .then(data => {
+   .then(resp => {
+    return resp.json()
+  })
+  .then(data => {
       console.log(data)
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
@@ -87,10 +87,8 @@ function generateRecipe (){
  
    var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&dishType=${selectedDishType}&healthLabels=${selectedDiets}&ingr=3-10&time=5-25&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
    fetch(apiUrlEdamam)
-   .then(resp => {
-    console.log(resp.status)
-   })
-   .then(data => {
+   .then(response => response.json())
+    .then(data => {
 
     console.log(data)
 
