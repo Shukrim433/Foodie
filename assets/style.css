@@ -1,7 +1,7 @@
 :root{
   --main-color: white   ;
   --secondary-color: #062523;
-  --tertiary-color: #2b3b44 ;
+  --tertiary-color: #57aba6 ;
   --orange: #f5a41d;
   --font: Arial, Helvetica, sans-serif;
  /* --border-radius: 5px;*/
@@ -33,7 +33,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid orange;
+  border-bottom: 5px solid var(--orange);
   padding: 1rem 0; /* this adds vertical padding */
 }
 
@@ -88,6 +88,7 @@ header{
   border-radius: 5px;
   margin: 3%;
   height: 120px;
+  background-color: var(--main-color);
 }
 
 
@@ -139,6 +140,7 @@ aside {
   width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
   border: var(--border);
   border-radius: 5px;
+
   margin: 2%;
   margin-left: 55px;
   /* Removed float: right; to ensure it doesn't force the aside to float next to it */
@@ -262,14 +264,46 @@ opacity: 20%;
 }
 
 
+
 /* Add media query for iPad and larger screens */
 @media only screen and (min-width: 400px) {
   .options-div {
     flex-direction: column;
     height: auto;
     padding: 5%;
-  }
+=======
+.recipe-card .recipe-image{
+    width: 25%;
+    height: auto;
+    border-radius: 5px;
 }
+
+.recipe-info{
+    float: right;
+    width: 70%;
+    margin-top: 6.25%;
+}
+
+.recipe-container{
+    margin: 20px;
+    margin-top: 30px;
+    background-color: #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: var(--main-color);
+}
+
+.recipe-url{
+    color: #f5a41d;
+}
+.recipe-name:hover{
+    color: #062523;
+    cursor: pointer;
+}
+
+
+
 
 
 @media only screen and (min-width: 768px) {
@@ -291,3 +325,4 @@ opacity: 20%;
     flex-direction: row; /* Adjust for larger screens */
   }
 }
+
