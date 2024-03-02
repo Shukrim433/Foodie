@@ -199,8 +199,9 @@ aside{
 .recipe-url{
     color: #f5a41d;
 }
-.recipe-name{
+.recipe-name:hover{
     color: #062523;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 600px) {
