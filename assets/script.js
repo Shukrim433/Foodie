@@ -98,13 +98,106 @@ function generateRecipe (){
 
       $(this).html(`<div class="recipe-container">
                       <div class="recipe-card">
-                        <img src=${recipeImg} alt="recipe image" class="recipe-image"></img>
+                        <a class="recipe-url" href=${recipeUrl}>
+                          <img src=${recipeImg} alt="recipe image" class="recipe-image"></img>
+                        </a>
                         <div class="recipe-info">
                           <h3 class="recipe-name"> ${recipeName} </h3>
-                          <a class="recipe-url" href=${recipeUrl}>${recipeUrl}</a>
+                          <div class="health-labels-div">
+                          
+                          </div>
                         </div>
                       </div>
                     </div>`)
+
+      //attempting to display healthLabels in recipe div
+      var healthLabelsArray = data.hits[index].recipe.healthLabels
+
+      healthLabelsArray.forEach(function(element){
+        var healthLabelsContainerEl = $('.health-labels-div')
+        var healthLabeldivEl = $('<div></div>')
+        healthLabeldivEl.text(healthLabelsArray[element])
+        healthLabelsContainerEl.append(healthLabeldivEl)
+        
+
+      })
+      
+
+    })
+
+   $('.recipe-nutrients').each(function(index){
+           //NUTRIENTS
+       var calcium = data.hits[index].recipe.totalNutrients.CA.label
+       var calciumQuantity = data.hits[index].recipe.totalNutrients.CA.quantity.toFixed(1) //(round it to 1dp using .toFixed)
+       var calciumUnit = data.hits[index].recipe.totalNutrients.CA.unit
+ 
+       var carbs = data.hits[index].recipe.totalNutrients.CHOCDF.label
+       var carbsQuantity = data.hits[index].recipe.totalNutrients.CHOCDF.quantity.toFixed(1)
+       var carbsUnit = data.hits[index].recipe.totalNutrients.CHOCDF.unit
+ 
+       var cholesterol = data.hits[index].recipe.totalNutrients.CHOLE.label
+       var cholesterolQuantity = data.hits[index].recipe.totalNutrients.CHOLE.quantity.toFixed(1)
+       var cholesterolUnit = data.hits[index].recipe.totalNutrients.CHOLE.unit
+ 
+       var kcal = data.hits[index].recipe.totalNutrients.ENERC_KCAL.label
+       var kcalQuantity = Math.floor(data.hits[index].recipe.totalNutrients.ENERC_KCAL.quantity) //(round down usinf Math.floor)
+       var kcalUnit = data.hits[index].recipe.totalNutrients.ENERC_KCAL.unit
+ 
+       var fat = data.hits[index].recipe.totalNutrients.FAT.label
+       var fatQuantity = data.hits[index].recipe.totalNutrients.FAT.quantity.toFixed(1)
+       var fatUnit = data.hits[index].recipe.totalNutrients.FAT.unit
+ 
+       var iron = data.hits[index].recipe.totalNutrients.FE.label
+       var ironQuantity = data.hits[index].recipe.totalNutrients.FE.quantity.toFixed(1)
+       var ironUnit = data.hits[index].recipe.totalNutrients.FE.unit
+ 
+       var fiber = data.hits[index].recipe.totalNutrients.FIBTG.label
+       var fiberQuantity = data.hits[index].recipe.totalNutrients.FIBTG.quantity.toFixed(1)
+       var fiberUnit = data.hits[index].recipe.totalNutrients.FIBTG.unit
+ 
+       var potassium  = data.hits[index].recipe.totalNutrients.K.label
+       var potassiumQuantity = data.hits[index].recipe.totalNutrients.K.quantity.toFixed(1)
+       var potassiumUnit = data.hits[index].recipe.totalNutrients.K.unit
+ 
+       var magnesium = data.hits[index].recipe.totalNutrients.MG.label
+       var magnesiumQuantity = data.hits[index].recipe.totalNutrients.MG.quantity.toFixed(1)
+       var magnesiumUnit = data.hits[index].recipe.totalNutrients.MG.unit
+ 
+       var sodium = data.hits[index].recipe.totalNutrients.NA.label
+       var sodiumQuantity = data.hits[index].recipe.totalNutrients.NA.quantity.toFixed(1)
+       var sodiumUnit = data.hits[index].recipe.totalNutrients.NA.unit
+ 
+       var protein = data.hits[index].recipe.totalNutrients.PROCNT.label
+       var proteinQuantity = data.hits[index].recipe.totalNutrients.PROCNT.quantity.toFixed(1)
+       var proteinUnit = data.hits[index].recipe.totalNutrients.PROCNT.unit
+ 
+       //SERVING SIZE
+       var servings = data.hits[index].recipe.yield
+ 
+       //TOTAL MINUTES
+       var totalTime = data.hits[index].recipe.totalTime //(in minutes)
+ 
+       $(this).html(`<div class="nutrients-container">
+                        <div class="kcal-servings-time-div">
+                          <h5 class="servings-div">Number of servings: ${servings}</h5>
+                          <h4 class="kcal-h3">${kcalQuantity} ${kcalUnit}</h4>
+                          <h5 class="total-time-div">Total Cooking time: ${totalTime} minutes</h5>
+                        </div>
+                        <div class="grams-div">
+                          <div class ="protein-div">${protein}:     ${proteinQuantity}${proteinUnit}</div>
+                          <div class ="fat-div">${fat}:     ${fatQuantity}${fatUnit}</div>
+                          <div class ="protein-div">${carbs}:     ${carbsQuantity}${carbsUnit}</div>
+                          <div class ="protein-div">${fiber}:     ${fiberQuantity}${fiberUnit}</div>
+                        </div>
+                        <div class="mg-div">
+                          <div class ="cholesterol-div">${cholesterol}: ${cholesterolQuantity}${cholesterolUnit}</div>
+                          <div class ="protein-div">${sodium}:     ${sodiumQuantity}${sodiumUnit}</div>
+                          <div class ="protein-div">${calcium}:     ${calciumQuantity}${calciumUnit}</div>
+                          <div class ="protein-div">${magnesium}:     ${magnesiumQuantity}${magnesiumUnit}</div>
+                          <div class ="protein-div">${potassium}:     ${potassiumQuantity}${potassiumUnit}</div>
+                          <div class ="protein-div">${iron}:     ${ironQuantity}${ironUnit}</div>
+                        </div>
+                     </div>`)
 
     })
 
