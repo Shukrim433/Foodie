@@ -47,6 +47,35 @@ function generateRecipe (){
  /* var healthParameterValue = selectedDiets.join(', ') // joins all the elements of the selectedDiets array into a single string that separates
   //them with commas. e.g. selectedDiets =  ['vegan' , 'vegetarian'] healthParameterValue = 'vegan,vegetarian'*/
 
+
+      // Get the modal for edamam
+      var modaledamam = document.getElementById("myModal");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close-button")[0];
+      
+      // When the user clicks the button, open the modal 
+      function showModal() {
+        modaledamam.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modaledamam.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modaledamam) {
+          modaledamam.style.display = "none";
+        }
+      }
+      
+            
+
+
+
+
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
  
   fetch(apiUrlPexels,{
@@ -58,6 +87,7 @@ function generateRecipe (){
   })
   .then(data => {
       console.log(data)
+     
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
         var photographer = data.photos[0].photographer
@@ -65,16 +95,39 @@ function generateRecipe (){
         $('.meal-type-name').text(`${selectedCuisineType} ${selectedMealType} Recipe Ideas`)
       })
 
-      queryInput = queryInputEl.value
-      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
+
+
+
+
+      queryInput = queryInputEl.value;
+      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?type=public&mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`;
+      
+
+
+
+
       fetch(apiUrlEdamam)
-      .then(response => response.json())
+      .then(response => {
+          if (!response.ok) {
+              if (response.status === 404) {
+                  throw new Error('No recipes found for the given criteria.');
+              } else {
+                  throw new Error('Unable to fetch recipes at this time.');
+              }
+          }
+          return response.json();
+      })
       .then(data => {
+          console.log(data);
+          // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
+          // Assuming the relevant data is in data.hits array
+          if (!data.hits || data.hits.length === 0) {
+            showModal();
+          }
 
-      console.log(data)
-     
+  
 
-   
+
     //this will add recipe info/content to each recipe div on the page
     $('.each-recipe').each(function(index){
       //accessing the recipe label, image and url from the data response
