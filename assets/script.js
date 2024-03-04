@@ -11,9 +11,9 @@ var welcomePageEl = document.getElementById('welcome-page')
 var recipePageEl = document.getElementById('recipe-page')
 var imageEl = document.getElementById('image')
 var photoCreditEl = document.getElementById('photo-credit')
-var mealTypeSelect = document.getElementById('meal-type')
-var dishTypeSelect = document.getElementById('dish-type')
-var dietTypeSelect = document.getElementById('diet-type')
+var mealTypeSelectEl = document.getElementById('meal-type')
+var cuisineTypeSelectEl = document.getElementById('cuisine-type')
+var queryInputEl = document.getElementById('query-input')
 
 
 //code to show welcome page and hide recipe page :
@@ -29,43 +29,25 @@ startBtnEl.addEventListener('click' , showRecipePage)
 
 //change event on mealtype options
 let selectedMealType;
-  mealTypeSelect.addEventListener('change' , function(){
-  selectedMealType = mealTypeSelect.value 
+  mealTypeSelectEl.addEventListener('change' , function(){
+  selectedMealType = mealTypeSelectEl.value 
   console.log(selectedMealType)
 })
-//change event on dishType options
-let selectedDishType;
-dishTypeSelect.addEventListener('change' , function(){
-  selectedDishType = dishTypeSelect.value
-  console.log(selectedDishType)
+//change event on cuisineType options
+let selectedCuisineType;
+cuisineTypeSelectEl.addEventListener('change' , function(){
+  selectedCuisineType = cuisineTypeSelectEl.value
+  console.log(selectedCuisineType)
 })
 
-let selectedDiets = [];
-dietTypeSelect.addEventListener('change', function() {
-    selectedDiets = []; //clears the selected diets array each time a new option is clicked, to make sure it only contains currently selected options 
-    // otherwise previous ones would remain in the array still.
 
-    var selectedOptions = Array.from(dietTypeSelect.selectedOptions);
-    //Array.from() a javascript method used to create an array of all the currently selected options in the diet type <select> element
-    //.selectedOptions is a property on all <select> element objects in the DOM that accesses all the currently selected options in the specified <select> element (dietTypeSelect)
-
-    selectedOptions.forEach(function(selectedOption) {
-      //.forEach() funtion used to apply a function on each ELEMENT in an array (selectedOptions array) 
-        selectedDiets.push(selectedOption.value); // Push each selected option(element)'s value into the selectedDiets array
-    });
-
-    console.log(selectedDiets);
-});
-
-
-
-
+let queryInput;
 function generateRecipe (){
   //setting the value of the health parameter in the edamam query string.
  /* var healthParameterValue = selectedDiets.join(', ') // joins all the elements of the selectedDiets array into a single string that separates
   //them with commas. e.g. selectedDiets =  ['vegan' , 'vegetarian'] healthParameterValue = 'vegan,vegetarian'*/
 
-  var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}`
+  var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
  
   fetch(apiUrlPexels,{
    headers: {
@@ -78,52 +60,63 @@ function generateRecipe (){
       console.log(data)
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
-      var photographer = data.photos[0].photographer
-      photoCreditEl.textContent= `Photo by ${photographer}`
-      $('.meal-type-name').text(`${selectedMealType} recipe ideas`)
-    })
+        var photographer = data.photos[0].photographer
+        photoCreditEl.textContent= `Photo by ${photographer}`
+        $('.meal-type-name').text(`${selectedCuisineType} ${selectedMealType} Recipe Ideas`)
+      })
 
- 
-   var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&dishType=${selectedDishType}&healthLabels=${selectedDiets}&ingr=3-10&time=5-25&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
-   fetch(apiUrlEdamam)
-   .then(response => response.json())
-    .then(data => {
+      queryInput = queryInputEl.value
+      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
+      fetch(apiUrlEdamam)
+      .then(response => response.json())
+      .then(data => {
 
-    console.log(data)
+      console.log(data)
+     
 
+   
+    //this will add recipe info/content to each recipe div on the page
     $('.each-recipe').each(function(index){
+      //accessing the recipe label, image and url from the data response
       var recipeName = data.hits[index].recipe.label
       var recipeImg = data.hits[index].recipe.images.SMALL.url /* OR  data.hits[i].recipe.image*/
       var recipeUrl = data.hits[index].recipe.url  
 
+      //accessing the first 15 health labels of each recipe from the data response
+      var healthLabel1 = data.hits[index].recipe.healthLabels[0]
+      var healthLabel2 = data.hits[index].recipe.healthLabels[1]
+      var healthLabel3 = data.hits[index].recipe.healthLabels[2]
+      var healthLabel4 = data.hits[index].recipe.healthLabels[3]
+      var healthLabel5 = data.hits[index].recipe.healthLabels[4]
+      var healthLabel6 = data.hits[index].recipe.healthLabels[5]
+      var healthLabel7 = data.hits[index].recipe.healthLabels[6]
+      var healthLabel8 = data.hits[index].recipe.healthLabels[7]
+      var healthLabel9 = data.hits[index].recipe.healthLabels[8]
+      var healthLabel10 = data.hits[index].recipe.healthLabels[9]
+      var healthLabel11 = data.hits[index].recipe.healthLabels[10]
+      var healthLabel12 = data.hits[index].recipe.healthLabels[11]
+      var healthLabel13 = data.hits[index].recipe.healthLabels[12]
+      var healthLabel14 = data.hits[index].recipe.healthLabels[13]
+      var healthLabel15 = data.hits[index].recipe.healthLabels[14]
+
+
+
+      //creating a recipe container to display the data accessed from the response
       $(this).html(`<div class="recipe-container">
                       <div class="recipe-card">
                         <a class="recipe-url" href=${recipeUrl}>
                           <img src=${recipeImg} alt="recipe image" class="recipe-image"></img>
                         </a>
                         <div class="recipe-info">
-                          <h3 class="recipe-name"> ${recipeName} </h3>
-                          <div class="health-labels-div">
-                          
-                          </div>
+                          <h2 class="recipe-name"> ${recipeName} </h2>
+                          <a class="health-labels-container">
+                            *${healthLabel1}   *${healthLabel2}   *${healthLabel3}   *${healthLabel4}   *${healthLabel5}   *${healthLabel6}   *${healthLabel7}   *${healthLabel8}   *${healthLabel9}   *${healthLabel10}   *${healthLabel11}   *${healthLabel12}   *${healthLabel13}   *${healthLabel14}   *${healthLabel15}
+                          </a>
                         </div>
                       </div>
                     </div>`)
-
-      //attempting to display healthLabels in recipe div
-      var healthLabelsArray = data.hits[index].recipe.healthLabels
-
-      healthLabelsArray.forEach(function(element){
-        var healthLabelsContainerEl = $('.health-labels-div')
-        var healthLabeldivEl = $('<div></div>')
-        healthLabeldivEl.text(healthLabelsArray[element])
-        healthLabelsContainerEl.append(healthLabeldivEl)
-        
-
-      })
-      
-
     })
+
 
    $('.recipe-nutrients').each(function(index){
            //NUTRIENTS
