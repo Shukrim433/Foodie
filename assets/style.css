@@ -8,9 +8,9 @@
     --border: 3px solid var(--secondary-color);
   }
   
-  
-  
-  
+
+
+
   
   /** {
     box-sizing: border-box;
@@ -22,7 +22,7 @@
     margin: 0;
   }
   
-  header{
+  #main-header{
     font-size: 2rem;
     margin: 0;
     font-family: "Lilita One", sans-serif;
@@ -50,7 +50,7 @@
   
   /* Button styles */
   .btn {
-    background-color: var(--secondary-color);
+    background-color: var(--orange);
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -61,7 +61,7 @@
   }
   
   .btn:hover {
-    background-color: var(--orange);
+    background-color: var(--secondary-color);
   }
   
   /*made logo image smaller*/
@@ -85,7 +85,6 @@
     align-items: center;
     border: var(--border);
     padding: 2%;
-    border-radius: 5px;
     margin: 3%;
     height: 120px;
     background-color: var(--main-color);
@@ -115,6 +114,15 @@
     border-radius: 5px;
     margin-bottom: 15px;
   }
+  input{
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+
+  }
   
   label{
     text-align: center;
@@ -131,8 +139,35 @@
     border: var(--border);
     border-radius: 5px;
     margin-left: 30px;
-    padding: 7%;
+    padding-top: 1%;
+    padding-bottom: 7%;
+    padding-left: 7%;
+    padding-right: 7%;
+    background-color:#ededed;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* Removed float: left; to ensure it stacks under #recipe-info */
+  }
+  #search-history {
+    font-size: 18px;
+  }
+  .recent-searches {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .recent-searches:hover {
+    background-color:rgb(164, 107, 0);
+  }
+  #search-history-header{
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-family: "Lilita One", sans-serif;
+    color: var(--secondary-color);
+    font-weight: 400;
   }
   
   #recipe-info{
@@ -145,6 +180,7 @@
     margin-left: 55px;
     /* Removed float: right; to ensure it doesn't force the aside to float next to it */
   }
+
   
   
   
@@ -220,11 +256,12 @@
     padding: 1%;
     float: right;
     width: 62%;
+    margin: 2%;
     border: var(--border);
     border-radius: 5px;
     margin: 2%;
     margin-left: 55px;
-  }
+}
   
   #recipe-div{
     display: flex;
