@@ -14,11 +14,13 @@ var photoCreditEl = document.getElementById('photo-credit')
 var mealTypeSelectEl = document.getElementById('meal-type')
 var cuisineTypeSelectEl = document.getElementById('cuisine-type')
 var queryInputEl = document.getElementById('query-input')
+var searchHistoryEl = document.getElementById('search-history')
 
 
 //code to show welcome page and hide recipe page :
 welcomePageEl.style.display = 'block'
 recipePageEl.style.display = 'none'
+
 
 //code to show recipe page and hide welcome page:
 function showRecipePage(){
@@ -27,26 +29,66 @@ function showRecipePage(){
 }
 startBtnEl.addEventListener('click' , showRecipePage)
 
-//change event on mealtype options
-let selectedMealType;
-  mealTypeSelectEl.addEventListener('change' , function(){
-  selectedMealType = mealTypeSelectEl.value 
-  console.log(selectedMealType)
+
+var savedRecipes = JSON.parse(localStorage.getItem('recipe-key')) || []
+savedRecipes.forEach(function(element){
+  searchHistoryEl.innerHTML += `<div class="recent-searches">${element.query}<div>`
 })
-//change event on cuisineType options
-let selectedCuisineType;
+
+
+let selectedCuisineType; 
 cuisineTypeSelectEl.addEventListener('change' , function(){
   selectedCuisineType = cuisineTypeSelectEl.value
   console.log(selectedCuisineType)
+ })
+
+let selectedMealType; 
+mealTypeSelectEl.addEventListener('change' , function(){
+  selectedMealType = mealTypeSelectEl.value 
+  console.log(selectedMealType)
+  })
+
+let queryInput;
+function clickGenerateBtn(){
+
+   queryInput = queryInputEl.value
+   searchHistoryEl.innerHTML += `<div class="recent-searches">${queryInput}<div>`
+
+   savedRecipes.push({
+    cuisineType: selectedCuisineType,
+    mealType: selectedMealType,
+    query: queryInput
+  });
+
+   localStorage.setItem('recipe-key' , JSON.stringify(savedRecipes))
+
+    generateRecipe()
+}
+
+$(document).on('click' , '.recent-searches', function(){
+  queryInput = $(this).text() //this keyword refers to the specific .recent-searches element that triggered the click event
+  /*selectedMealType = 
+  selectedCuisineType = */
+  var clickedQuery = $(this).text(); // Get the text of the clicked recent search
+  // Find the corresponding saved recipe in the savedRecipes array
+  var clickedRecipe = savedRecipes.find(recipe => recipe.query === clickedQuery);
+  if (clickedRecipe) {
+    // Update selectedMealType and selectedCuisineType with the values from the clicked recipe
+    selectedMealType = clickedRecipe.mealType;
+    selectedCuisineType = clickedRecipe.cuisineType;
+    generateRecipe();
+  } else {
+    console.log('Clicked recipe not found in saved recipes.');
+  }
+  generateRecipe()
 })
 
 
-let queryInput;
-function generateRecipe (){
-  //setting the value of the health parameter in the edamam query string.
- /* var healthParameterValue = selectedDiets.join(', ') // joins all the elements of the selectedDiets array into a single string that separates
-  //them with commas. e.g. selectedDiets =  ['vegan' , 'vegetarian'] healthParameterValue = 'vegan,vegetarian'*/
 
+
+function generateRecipe (){
+
+  //pexels API
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
  
   fetch(apiUrlPexels,{
@@ -65,7 +107,7 @@ function generateRecipe (){
         $('.meal-type-name').text(`${selectedCuisineType} ${selectedMealType} Recipe Ideas`)
       })
 
-      queryInput = queryInputEl.value
+
       var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
       fetch(apiUrlEdamam)
       .then(response => response.json())
@@ -81,6 +123,7 @@ function generateRecipe (){
       var recipeName = data.hits[index].recipe.label
       var recipeImg = data.hits[index].recipe.images.SMALL.url /* OR  data.hits[i].recipe.image*/
       var recipeUrl = data.hits[index].recipe.url  
+      
 
       //accessing the first 15 health labels of each recipe from the data response
       var healthLabel1 = data.hits[index].recipe.healthLabels[0]
@@ -110,7 +153,8 @@ function generateRecipe (){
                         <div class="recipe-info">
                           <h2 class="recipe-name"> ${recipeName} </h2>
                           <a class="health-labels-container">
-                            *${healthLabel1}   *${healthLabel2}   *${healthLabel3}   *${healthLabel4}   *${healthLabel5}   *${healthLabel6}   *${healthLabel7}   *${healthLabel8}   *${healthLabel9}   *${healthLabel10}   *${healthLabel11}   *${healthLabel12}   *${healthLabel13}   *${healthLabel14}   *${healthLabel15}
+                          *${healthLabel1}   *${healthLabel2}   *${healthLabel3}   *${healthLabel4}   *${healthLabel5}   *${healthLabel6}   *${healthLabel7}   *${healthLabel8}   *${healthLabel9}   *${healthLabel10}   *${healthLabel11}   *${healthLabel12}   *${healthLabel13}   *${healthLabel14}   *${healthLabel15}
+                          
                           </a>
                         </div>
                       </div>
@@ -177,27 +221,38 @@ function generateRecipe (){
                           <h5 class="total-time-div">Total Cooking time: ${totalTime} minutes</h5>
                         </div>
                         <div class="grams-div">
-                          <div class ="protein-div">${protein}:     ${proteinQuantity}${proteinUnit}</div>
-                          <div class ="fat-div">${fat}:     ${fatQuantity}${fatUnit}</div>
-                          <div class ="protein-div">${carbs}:     ${carbsQuantity}${carbsUnit}</div>
-                          <div class ="protein-div">${fiber}:     ${fiberQuantity}${fiberUnit}</div>
+                          <div class ="protein-div">${protein}: ${proteinQuantity}${proteinUnit}</div>
+                          <div class ="fat-div">${fat}: ${fatQuantity}${fatUnit}</div>
+                          <div class ="protein-div">${carbs}: ${carbsQuantity}${carbsUnit}</div>
+                          <div class ="protein-div">${fiber}: ${fiberQuantity}${fiberUnit}</div>
                         </div>
                         <div class="mg-div">
                           <div class ="cholesterol-div">${cholesterol}: ${cholesterolQuantity}${cholesterolUnit}</div>
-                          <div class ="protein-div">${sodium}:     ${sodiumQuantity}${sodiumUnit}</div>
-                          <div class ="protein-div">${calcium}:     ${calciumQuantity}${calciumUnit}</div>
-                          <div class ="protein-div">${magnesium}:     ${magnesiumQuantity}${magnesiumUnit}</div>
-                          <div class ="protein-div">${potassium}:     ${potassiumQuantity}${potassiumUnit}</div>
-                          <div class ="protein-div">${iron}:     ${ironQuantity}${ironUnit}</div>
+                          <div class ="protein-div">${sodium}: ${sodiumQuantity}${sodiumUnit}</div>
+                          <div class ="protein-div">${calcium}: ${calciumQuantity}${calciumUnit}</div>
+                          <div class ="protein-div">${magnesium}: ${magnesiumQuantity}${magnesiumUnit}</div>
+                          <div class ="protein-div">${potassium}: ${potassiumQuantity}${potassiumUnit}</div>
+                          <div class ="protein-div">${iron}: ${ironQuantity}${ironUnit}</div>
                         </div>
                      </div>`)
+
+                     
 
     })
 
    })
+
   }
+
+  generateBtnEl.addEventListener('click' , clickGenerateBtn)
+
+
+
+
+
  
- generateBtnEl.addEventListener('click' , generateRecipe)
+
+
 
  
 
