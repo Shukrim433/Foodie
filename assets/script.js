@@ -15,17 +15,24 @@ var mealTypeSelectEl = document.getElementById('meal-type')
 var cuisineTypeSelectEl = document.getElementById('cuisine-type')
 var queryInputEl = document.getElementById('query-input')
 var searchHistoryEl = document.getElementById('search-history')
+var imageContainerEl = document.getElementById('img-container')
+var recipeInfoEl = document.getElementById('recipe-info')
 
 
 //code to show welcome page and hide recipe page :
 welcomePageEl.style.display = 'block'
 recipePageEl.style.display = 'none'
+imageContainerEl.style.display = 'none'
+recipeInfoEl.style.display = 'none'
+
 
 
 //code to show recipe page and hide welcome page:
 function showRecipePage(){
   welcomePageEl.style.display = 'none'
   recipePageEl.style.display = 'block'
+  imageContainerEl.style.display = 'none'
+recipeInfoEl.style.display = 'none'
 }
 startBtnEl.addEventListener('click' , showRecipePage)
 
@@ -50,6 +57,8 @@ mealTypeSelectEl.addEventListener('change' , function(){
 
 let queryInput;
 function clickGenerateBtn(){
+  imageContainerEl.style.display = 'block'
+recipeInfoEl.style.display = 'block'
 
    queryInput = queryInputEl.value
    searchHistoryEl.innerHTML += `<div class="recent-searches">${queryInput}<div>`
