@@ -124,6 +124,7 @@ function generateRecipe (){
           }
           return response.json();
       })
+      
       .then(data => {
           console.log(data);
           // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
