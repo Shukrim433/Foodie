@@ -46,20 +46,15 @@ savedRecipes.forEach(function(element){
 let selectedCuisineType; 
 cuisineTypeSelectEl.addEventListener('change' , function(){
   selectedCuisineType = cuisineTypeSelectEl.value
-  console.log(selectedCuisineType)
  })
 
 let selectedMealType; 
 mealTypeSelectEl.addEventListener('change' , function(){
   selectedMealType = mealTypeSelectEl.value 
-  console.log(selectedMealType)
   })
 
 let queryInput;
 function clickGenerateBtn(){
-  imageContainerEl.style.display = 'block'
-recipeInfoEl.style.display = 'block'
-
    queryInput = queryInputEl.value
    searchHistoryEl.innerHTML += `<div class="recent-searches">${queryInput}<div>`
 
@@ -76,18 +71,15 @@ recipeInfoEl.style.display = 'block'
 
 $(document).on('click' , '.recent-searches', function(){
   queryInput = $(this).text() //this keyword refers to the specific .recent-searches element that triggered the click event
-  /*selectedMealType = 
-  selectedCuisineType = */
-  var clickedQuery = $(this).text(); // Get the text of the clicked recent search
-  // Find the corresponding saved recipe in the savedRecipes array
+  var clickedQuery = $(this).text(); // gets the text of the clicked recent search
+  // this finds the corresponding saved recipe in the savedRecipes array
   var clickedRecipe = savedRecipes.find(recipe => recipe.query === clickedQuery);
   if (clickedRecipe) {
-    // Update selectedMealType and selectedCuisineType with the values from the clicked recipe
+    // updates the selectedMealType and selectedCuisineType with the values from the clicked recipe
     selectedMealType = clickedRecipe.mealType;
     selectedCuisineType = clickedRecipe.cuisineType;
+    queryInputEl.value = clickedQuery; // updates the queryInputEl.value with the query from the clicked recent search
     generateRecipe();
-  } else {
-    console.log('Clicked recipe not found in saved recipes.');
   }
   generateRecipe()
 })
@@ -110,7 +102,6 @@ function generateRecipe (){
     return resp.json()
   })
   .then(data => {
-      console.log(data)
      
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
@@ -134,8 +125,7 @@ function generateRecipe (){
       })
       
       .then(data => {
-          console.log(data);
-          // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
+          // This checks if the API returned recipes. This might depend on the specific structure of the Edamam API response.
           // Assuming the relevant data is in data.hits array
           if (!data.hits || data.hits.length === 0) {
             showModal();
@@ -191,13 +181,12 @@ function generateRecipe (){
       $(this).html(`<div class="recipe-container">
                       <div class="recipe-card">
                         <a class="recipe-url" href=${recipeUrl}>
-                          <img src=${recipeImg} alt="recipe image" class="recipe-image" title="Click to view recipe"></img>
+                        <img src=${recipeImg} alt="recipe image" class="recipe-image" title="Click to view recipe"></img>
                         </a>
                         <div class="recipe-info">
                           <h2 class="recipe-name"> ${recipeName} </h2>
                           <a class="health-labels-container">
                           *${healthLabel1}   *${healthLabel2}   *${healthLabel3}   *${healthLabel4}   *${healthLabel5}   *${healthLabel6}   *${healthLabel7}   *${healthLabel8}   *${healthLabel9}   *${healthLabel10}   *${healthLabel11}   *${healthLabel12}   *${healthLabel13}   *${healthLabel14}   *${healthLabel15}
-                          
                           </a>
                         </div>
                       </div>
