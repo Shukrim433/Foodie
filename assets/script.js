@@ -26,6 +26,7 @@ imageContainerEl.style.display = 'none'
 recipeInfoEl.style.display = 'none'
 
 
+
 //code to show recipe page and hide welcome page:
 function showRecipePage(){
   welcomePageEl.style.display = 'none'
@@ -56,6 +57,8 @@ mealTypeSelectEl.addEventListener('change' , function(){
 
 let queryInput;
 function clickGenerateBtn(){
+  imageContainerEl.style.display = 'block'
+recipeInfoEl.style.display = 'block'
 
    queryInput = queryInputEl.value
    searchHistoryEl.innerHTML += `<div class="recent-searches">${queryInput}<div>`
@@ -94,7 +97,7 @@ $(document).on('click' , '.recent-searches', function(){
 
 function generateRecipe (){
   imageContainerEl.style.display = 'block'
-  recipeInfoEl.style.display = 'none'
+  recipeInfoEl.style.display = 'block'
 
   //pexels API
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
