@@ -32,7 +32,7 @@ function showRecipePage(){
   welcomePageEl.style.display = 'none'
   recipePageEl.style.display = 'block'
   imageContainerEl.style.display = 'none'
-recipeInfoEl.style.display = 'none'
+  recipeInfoEl.style.display = 'none'
 }
 startBtnEl.addEventListener('click' , showRecipePage)
 
@@ -96,9 +96,8 @@ $(document).on('click' , '.recent-searches', function(){
 
 
 function generateRecipe (){
-  //setting the value of the health parameter in the edamam query string.
- /* var healthParameterValue = selectedDiets.join(', ') // joins all the elements of the selectedDiets array into a single string that separates
-  //them with commas. e.g. selectedDiets =  ['vegan' , 'vegetarian'] healthParameterValue = 'vegan,vegetarian'*/
+  imageContainerEl.style.display = 'block'
+  recipeInfoEl.style.display = 'block'
 
   //pexels API
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
@@ -121,7 +120,7 @@ function generateRecipe (){
       })
 
       queryInput = queryInputEl.value
-      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
+      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-45&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
       fetch(apiUrlEdamam)
       .then(response => {
           if (!response.ok) {
@@ -192,7 +191,7 @@ function generateRecipe (){
       $(this).html(`<div class="recipe-container">
                       <div class="recipe-card">
                         <a class="recipe-url" href=${recipeUrl}>
-                          <img src=${recipeImg} alt="recipe image" class="recipe-image"></img>
+                          <img src=${recipeImg} alt="recipe image" class="recipe-image" title="Click to view recipe"></img>
                         </a>
                         <div class="recipe-info">
                           <h2 class="recipe-name"> ${recipeName} </h2>
@@ -291,31 +290,5 @@ function generateRecipe (){
 
   generateBtnEl.addEventListener('click' , clickGenerateBtn)
 
-
-
-
-
- 
-
-
-
- 
-
-
-
-
-
-
-//code for jquery ui modal widget functionality
-/*$( function() {
-    $( "#error-message-modal" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  } );*/
 
 
