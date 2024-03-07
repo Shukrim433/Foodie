@@ -124,6 +124,7 @@ function generateRecipe (){
           }
           return response.json();
       })
+      
       .then(data => {
           console.log(data);
           // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
@@ -132,7 +133,23 @@ function generateRecipe (){
             showModal();
           }
 
-  
+          function showModal() {
+            // Show the modal
+            $("#myModal").css("display", "block");
+        
+            // When the user clicks on <span> (x), close the modal
+            $(".close-button").click(function() {
+                $("#myModal").css("display", "none");
+            });
+        
+            // When the user clicks anywhere outside of the modal, close it
+            $(window).click(function(event) {
+                if ($(event.target).is("#myModal")) {
+                    $("#myModal").css("display", "none");
+                }
+            });
+        }
+        
 
 
     //this will add recipe info/content to each recipe div on the page

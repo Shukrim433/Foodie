@@ -91,13 +91,30 @@
   }
   
   
-  #search-history
-  {
-  font-size: 20px;
-  text-align: left;
-  position: relative;
-  bottom: 100px;
+
+  #search-history {
+    font-size: 18px;
   }
+  .recent-searches {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .recent-searches:hover {
+    background-color:rgb(164, 107, 0);
+  }
+  #search-history-header{
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-family: "Lilita One", sans-serif;
+    color: var(--secondary-color);
+    font-weight: 400;
+  }
+  
   
   
   #recipe-nutrients
