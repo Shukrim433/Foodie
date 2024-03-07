@@ -287,4 +287,6 @@ function generateRecipe (){
 
   }
 
+
   generateBtnEl.addEventListener('click' , clickGenerateBtn)
+

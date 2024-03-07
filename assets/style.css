@@ -8,6 +8,8 @@
     --border: 3px solid var(--secondary-color);
   }
 
+
+
   body{
     font-family: var(--font);
     background-color: var(--main-color);
@@ -122,6 +124,58 @@
     color: var(--secondary-color);
     font-weight: 400;
   }
+
+    font-size: 18px;
+  }
+  .recent-searches {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .recent-searches:hover {
+    background-color:rgb(164, 107, 0);
+  }
+  #search-history-header{
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-family: "Lilita One", sans-serif;
+    color: var(--secondary-color);
+    font-weight: 400;
+  }
+
+  #recipe-nutrients
+{
+  font-size: 15px;
+  margin-left: 90px;
+  }
+
+
+
+  /* Modal Styles */
+.modaledamam {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modaledamam-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 80%; /* Could be more or less, depending on screen size */
+text-align: center;
+}
+
   
 
 .close-button {
@@ -228,6 +282,104 @@ aside {
 
 
   
+=======
+  aside {
+    width: 10%; /* Take full width to ensure it doesn't float next to anything */
+    border: var(--border);
+    border-radius: 5px;
+    margin-left: 30px;
+    padding-top: 1%;
+    padding-bottom: 7%;
+    padding-left: 7%;
+    padding-right: 7%;
+    background-color:#ededed;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Removed float: left; to ensure it stacks under #recipe-info */
+  }
+  
+  #recipe-info{
+    padding: 7%;
+    width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
+    border: var(--border);
+    border-radius: 5px;
+    margin: 2%;
+    margin-left: 55px;
+    float: right;
+    margin: 2%;
+    border-radius: 5px;
+    /* Removed float: right; to ensure it doesn't force the aside to float next to it */
+  }
+
+  /* Add media query for mobile devices */
+@media only screen and (max-width: 400px) {
+  .options-div {
+    flex-direction: column; /* Stack divs vertically */
+    height: auto; /* Reset height */
+    padding: 5%; /* Adjust padding */
+    margin: 3% auto; /* Center divs on the page */
+    width: 90%; /* Set width to take up most of the screen */
+  }
+
+  aside {
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page and add some space above */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+
+  #recipe-info {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: relative; /* Reset position to default */
+    top: auto; /* Reset top position */
+    left: auto; /* Reset left position */
+  }
+}
+
+  /* Media Query for Mobile Devices */
+@media only screen and (max-width: 400px) {
+  /* Style for #recipe-info on mobile */
+  #recipe-info {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+    position: absolute; /* Position the div absolutely */
+    top: 50px; /* Initial top position */
+    left: 50px;
+  
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  /* Style for aside (Search History) on mobile */
+  aside {
+    float: none; /* Clear floats */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center the block on the page and add some space above */
+    padding: 10px; /* Adjust padding as necessary */
+    box-sizing: border-box; /* Include padding and border in the width */
+   
+ 
+
+  }
+}
+
+#recipe-info{
+  padding: 1%;
+  float: right;
+  width: 62%;
+  margin: 2%;
+  border: var(--border);
+  border-radius: 5px;
+  margin: 2%;
+  margin-left: 55px;
+}
+
   
   #recipe-div {
     display: flex;
@@ -385,9 +537,142 @@ color: var(--orange);
           }
         }
 
+       
+
+
+
+  /* Add media query for iPad and larger screens */
+@media only screen and (min-width: 400px) {
+  .options-div {
+    flex-direction: column;
+    height: auto;
+    padding: 5%;}
+
+.recipe-card .recipe-image{
+    width: 25%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.recipe-info{
+  float: right;
+  width: 70%;
+  margin-top: 6.25%;
+}
+
+.recipe-container{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.recipe-url:hover{
+    cursor: pointer;
+}
+.recipe-image:hover{
+    cursor: pointer;
+}
+.recipe-name{
+  color: #062523;
+  text-align: center;
+}
+
+.nutrients-container{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #ededed;
+  padding: 40px;
+  height: fit-content;
+}
+
+.kcal-servings-time-div{
+  float: left;
+  width: 40%;
+  text-align: center;
+  height: 100%;
+  color: rgb(0, 84, 0);
+
+}
+
+.grams-div{
+  float: right;
+  width: 30%;
+  color: red;
+}
+
+.mg-div{
+  color: var(--orange);
+  }
+
+  @media only screen and (min-width: 768px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Add media query for tablets and larger screens */
+  @media only screen and (min-width: 1024px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Add media query for desktop screens */
+  @media only screen and (min-width: 1200px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  }
+  
+  
+
+  /* Add media query for iPad and larger screens */
+    @media only screen and (max-width: 600px) {
+      .options-div {
+        flex-direction: column;
+        height: auto;
+        padding: 5%;}
+
+       
+          /* Assuming #recipe-div is the flex container that includes .options-div, #recipe-info, and aside */
+          #recipe-div {
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+          }
         
+      
+          #recipe-info {
+            order: 2; /* Second in layout, to appear in the middle */
+            display: block;
+            width:80%; /* Take full width of the screen */
+            margin: 0 auto; /* Center align */
+            padding: 5%; /* Adjust padding as needed */
+            float: none;
+          }
+        
+          aside {
+            order: 3; /* Last in layout, to appear at the bottom */
+            display: block;
+            width: 90%; /* Full width to prevent overflow */
+            margin: 20px auto; /* Centered with margin top and bottom */
+            position: static; /* Normal document flow */
+            padding: 10px;
+            box-sizing: border-box; /* Include padding in width calculations */
+          }
+        }
 
 
+  
   @media only screen and (min-width: 768px) {
     .options-div {
       flex-direction: row; /* Adjust for larger screens */
@@ -401,20 +686,35 @@ color: var(--orange);
     }
   }
 
+   
+  @media only screen and (min-width: 768px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Add media query for tablets and larger screens */
+  @media only screen and (min-width: 1024px) {
+    .options-div {
+      flex-direction: row; /* Adjust for larger screens */
+    }
+  }
+
+
+  .health-labels-container{
+    /*color: rgb(0, 84, 0);*/
+    color: black;
+    opacity: 70%;
+    text-align: center;
+  }
+  
+  span{
+    color: red;
+    font-size: 12px;
     
-  
-  
-  
-  @media only screen and (min-width: 768px) {
-    .options-div {
-      flex-direction: row; /* Adjust for larger screens */
-    }
   }
   
-  /* Add media query for tablets and larger screens */
-  @media only screen and (min-width: 1024px) {
-    .options-div {
-      flex-direction: row; /* Adjust for larger screens */
-    }
+  input{
+    padding: 9px;
+    border-radius: 4px;
   }
-
