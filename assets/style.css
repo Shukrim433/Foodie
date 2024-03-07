@@ -275,8 +275,13 @@ border-top-right-radius: 5px;
 .recipe-url:hover{
 cursor: pointer;
 }
+.recipe-image{
+  margin-left: 35%;
+  border-radius: 5px;
+}
 .recipe-image:hover{
 cursor: pointer;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .recipe-name{
 color: #062523;
@@ -317,10 +322,16 @@ color: var(--orange);
 
 /* Add media query for iPad and larger screens */
   @media only screen and (max-width: 600px) {
+    .recipe-image{
+      margin-left: 0%;
+      border-radius: 5px;
+      }
+
     .options-div {
       flex-direction: column;
       height: auto;
-      padding: 5%;}
+      padding: 5%;
+    }
 
      
         /* Assuming #recipe-div is the flex container that includes .options-div, #recipe-info, and aside */
