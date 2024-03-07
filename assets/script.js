@@ -279,8 +279,7 @@ function generateRecipe (){
                           <div class ="protein-div">${iron}: ${ironQuantity}${ironUnit}</div>
                         </div>
                      </div>`)
-
-                  
+       
 
     })
 
