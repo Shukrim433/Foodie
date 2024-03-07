@@ -94,7 +94,9 @@
   #search-history
   {
   font-size: 20px;
-  text-align: center;
+  text-align: left;
+  position: relative;
+  bottom: 100px;
   }
   
   
@@ -105,6 +107,49 @@
     }
   
   
+
+    /* Modal Styles */
+.modaledamam {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modaledamam-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
   
   select {
     width: 100%;
@@ -147,35 +192,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* Removed float: left; to ensure it stacks under #recipe-info */
   }
-  #search-history {
-    font-size: 18px;
-  }
-  .recent-searches {
-    margin-bottom: 8px;
-    padding: 6px 10px;
-    background-color: var(--orange);
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .recent-searches:hover {
-    background-color:rgb(164, 107, 0);
-  }
-  #search-history-header{
-    font-size: 35px;
-    margin-bottom: 30px;
-    font-family: "Lilita One", sans-serif;
-    color: var(--secondary-color);
-    font-weight: 400;
-  }
   
   #recipe-info{
     padding: 7%;
     width: 62%; /* Adjusted width to ensure it doesn't overlap with the aside on larger screens */
     border: var(--border);
     border-radius: 5px;
-  
     margin: 2%;
     margin-left: 55px;
     /* Removed float: right; to ensure it doesn't force the aside to float next to it */
@@ -276,7 +298,7 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
-    padding: 20px;
+    padding: 42px;
     margin: 1%;
     margin-bottom: 40px;
     margin-left: 17.5%;
