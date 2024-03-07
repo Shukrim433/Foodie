@@ -15,17 +15,24 @@ var mealTypeSelectEl = document.getElementById('meal-type')
 var cuisineTypeSelectEl = document.getElementById('cuisine-type')
 var queryInputEl = document.getElementById('query-input')
 var searchHistoryEl = document.getElementById('search-history')
+var imageContainerEl = document.getElementById('img-container')
+var recipeInfoEl = document.getElementById('recipe-info')
 
 
 //code to show welcome page and hide recipe page :
 welcomePageEl.style.display = 'block'
 recipePageEl.style.display = 'none'
+imageContainerEl.style.display = 'none'
+recipeInfoEl.style.display = 'none'
+
 
 
 //code to show recipe page and hide welcome page:
 function showRecipePage(){
   welcomePageEl.style.display = 'none'
   recipePageEl.style.display = 'block'
+  imageContainerEl.style.display = 'none'
+  recipeInfoEl.style.display = 'none'
 }
 startBtnEl.addEventListener('click' , showRecipePage)
 
@@ -50,6 +57,8 @@ mealTypeSelectEl.addEventListener('change' , function(){
 
 let queryInput;
 function clickGenerateBtn(){
+  imageContainerEl.style.display = 'block'
+recipeInfoEl.style.display = 'block'
 
    queryInput = queryInputEl.value
    searchHistoryEl.innerHTML += `<div class="recent-searches">${queryInput}<div>`
@@ -87,6 +96,8 @@ $(document).on('click' , '.recent-searches', function(){
 
 
 function generateRecipe (){
+  imageContainerEl.style.display = 'block'
+  recipeInfoEl.style.display = 'block'
 
   //pexels API
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
@@ -100,6 +111,7 @@ function generateRecipe (){
   })
   .then(data => {
       console.log(data)
+     
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
         var photographer = data.photos[0].photographer
@@ -107,16 +119,47 @@ function generateRecipe (){
         $('.meal-type-name').text(`${selectedCuisineType} ${selectedMealType} Recipe Ideas`)
       })
 
-
-      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
+      queryInput = queryInputEl.value
+      var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-45&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
       fetch(apiUrlEdamam)
-      .then(response => response.json())
+      .then(response => {
+          if (!response.ok) {
+              if (response.status === 404) {
+                  throw new Error('No recipes found for the given criteria.');
+              } else {
+                  throw new Error('Unable to fetch recipes at this time.');
+              }
+          }
+          return response.json();
+      })
+      
       .then(data => {
+          console.log(data);
+          // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
+          // Assuming the relevant data is in data.hits array
+          if (!data.hits || data.hits.length === 0) {
+            showModal();
+          }
 
-      console.log(data)
-     
+          function showModal() {
+            // Show the modal
+            $("#myModal").css("display", "block");
+        
+            // When the user clicks on <span> (x), close the modal
+            $(".close-button").click(function() {
+                $("#myModal").css("display", "none");
+            });
+        
+            // When the user clicks anywhere outside of the modal, close it
+            $(window).click(function(event) {
+                if ($(event.target).is("#myModal")) {
+                    $("#myModal").css("display", "none");
+                }
+            });
+        }
+        
 
-   
+
     //this will add recipe info/content to each recipe div on the page
     $('.each-recipe').each(function(index){
       //accessing the recipe label, image and url from the data response
@@ -148,7 +191,7 @@ function generateRecipe (){
       $(this).html(`<div class="recipe-container">
                       <div class="recipe-card">
                         <a class="recipe-url" href=${recipeUrl}>
-                          <img src=${recipeImg} alt="recipe image" class="recipe-image"></img>
+                          <img src=${recipeImg} alt="recipe image" class="recipe-image" title="Click to view recipe"></img>
                         </a>
                         <div class="recipe-info">
                           <h2 class="recipe-name"> ${recipeName} </h2>
@@ -164,6 +207,7 @@ function generateRecipe (){
 
    $('.recipe-nutrients').each(function(index){
            //NUTRIENTS
+           
        var calcium = data.hits[index].recipe.totalNutrients.CA.label
        var calciumQuantity = data.hits[index].recipe.totalNutrients.CA.quantity.toFixed(1) //(round it to 1dp using .toFixed)
        var calciumUnit = data.hits[index].recipe.totalNutrients.CA.unit
@@ -246,31 +290,5 @@ function generateRecipe (){
 
   generateBtnEl.addEventListener('click' , clickGenerateBtn)
 
-
-
-
-
- 
-
-
-
- 
-
-
-
-
-
-
-//code for jquery ui modal widget functionality
-/*$( function() {
-    $( "#error-message-modal" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  } );*/
 
 
