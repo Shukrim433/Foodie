@@ -87,6 +87,9 @@ $(document).on('click' , '.recent-searches', function(){
 
 
 function generateRecipe (){
+  //setting the value of the health parameter in the edamam query string.
+ /* var healthParameterValue = selectedDiets.join(', ') // joins all the elements of the selectedDiets array into a single string that separates
+  //them with commas. e.g. selectedDiets =  ['vegan' , 'vegetarian'] healthParameterValue = 'vegan,vegetarian'*/
 
   //pexels API
   var apiUrlPexels = `${PEXELS_API_BASE_URL}/v1/search?query=${selectedMealType}&orientation=landscape`
@@ -100,6 +103,7 @@ function generateRecipe (){
   })
   .then(data => {
       console.log(data)
+     
       var imgSrc = data.photos[0].src.medium
       imageEl.setAttribute('src' , imgSrc)
         var photographer = data.photos[0].photographer
@@ -107,16 +111,30 @@ function generateRecipe (){
         $('.meal-type-name').text(`${selectedCuisineType} ${selectedMealType} Recipe Ideas`)
       })
 
-
+      queryInput = queryInputEl.value
       var apiUrlEdamam = `${EDAMAM_API_BASE_URL}/api/recipes/v2?mealType=${selectedMealType}&cuisineType=${selectedCuisineType}&q=${queryInput}&ingr=3-10&time=5-60&type=public&app_id=${EDAMAM_API_APP_ID}&app_key=${EDAMAM_API_APP_KEY}`
       fetch(apiUrlEdamam)
-      .then(response => response.json())
+      .then(response => {
+          if (!response.ok) {
+              if (response.status === 404) {
+                  throw new Error('No recipes found for the given criteria.');
+              } else {
+                  throw new Error('Unable to fetch recipes at this time.');
+              }
+          }
+          return response.json();
+      })
       .then(data => {
+          console.log(data);
+          // Check if the API returned recipes. This might depend on the specific structure of the Edamam API response.
+          // Assuming the relevant data is in data.hits array
+          if (!data.hits || data.hits.length === 0) {
+            showModal();
+          }
 
-      console.log(data)
-     
+  
 
-   
+
     //this will add recipe info/content to each recipe div on the page
     $('.each-recipe').each(function(index){
       //accessing the recipe label, image and url from the data response
@@ -164,6 +182,7 @@ function generateRecipe (){
 
    $('.recipe-nutrients').each(function(index){
            //NUTRIENTS
+           
        var calcium = data.hits[index].recipe.totalNutrients.CA.label
        var calciumQuantity = data.hits[index].recipe.totalNutrients.CA.quantity.toFixed(1) //(round it to 1dp using .toFixed)
        var calciumUnit = data.hits[index].recipe.totalNutrients.CA.unit
